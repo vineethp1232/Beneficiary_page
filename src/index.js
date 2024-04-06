@@ -3,11 +3,37 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import ManageBeneficiary from './components/ManageBeneficiary';
+import Home from './components/Home';
+import {Provider} from "react-redux"
+import appStore from './utils/Redux/appStore';
+import AddBeneficiary from './components/AddBeneficiary';
+const appRouter=createBrowserRouter([
+  {
+    path:"/",
+    element:<App/>,
+    children:[{
+      path:"/",
+      element:<Home/>
+    },
+  {
+    path:"/beneficiary",
+    element:<ManageBeneficiary/>
+  },{
+    path:"/beneficiary/new",
+    element:<AddBeneficiary/>
+
+  }]
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={appStore}>
+    <RouterProvider router={appRouter}/>
+    </Provider>
   </React.StrictMode>
 );
 
