@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {useSelector,useDispatch} from "react-redux"
 import { DELETE_ICON, EDIT_ICON } from '../utils/constants'
 import {useNavigate} from 'react-router-dom'
-import { addBeneficiaryToEdit, addFormData, addViewBeneficiary, removeBeneficiary } from '../utils/Redux/beneficiarySlice'
+import { addBeneficiaryToEdit, addFormData, addMessage, removeBeneficiary} from '../utils/Redux/beneficiarySlice'
 import BeneficiaryView from './BeneficiaryView'
 const MyBeneficiaries = () => {
     const beneficiaries=useSelector(store=>store.beneficiary.myBeneficiaries)
@@ -13,6 +13,8 @@ const MyBeneficiaries = () => {
     const deleteBeneficiary=()=>{
         dispatch(removeBeneficiary(beneficiaryToDelete))
         setBeneficiaryToDelete(null)
+        dispatch(addMessage("Beneficiary deleted successfully"))
+        
     }
     const EditBeneficiary =(item)=>{
       dispatch(addBeneficiaryToEdit(item))

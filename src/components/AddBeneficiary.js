@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm} from "react-hook-form";
 import {useDispatch,useSelector} from "react-redux"
-import { addBeneficiary, removeFormData } from "../utils/Redux/beneficiarySlice";
+import { addBeneficiary, addMessage, removeFormData} from "../utils/Redux/beneficiarySlice";
 import {useNavigate} from "react-router-dom"
 import Form from "./Form";
 
@@ -12,6 +12,7 @@ const AddBeneficiary = () => {
     const generateBeneficiary=()=>{
         dispatch(addBeneficiary(formData))
         dispatch(removeFormData())
+        dispatch(addMessage("Beneficiary added successfully"))
         navigate("/beneficiary")
 
 

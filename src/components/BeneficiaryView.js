@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFormData } from "../utils/Redux/beneficiarySlice";
-const BeneficiaryView = () => {
+const BeneficiaryView = ({editBeneficiary}) => {
   const beneficiary = useSelector((store) => store.beneficiary.formData);
   const dispatch = useDispatch();
   const { name, account_number, bank_name, account_type, email_id } =
@@ -30,11 +30,14 @@ const BeneficiaryView = () => {
       </table>
 
       <button
-        className="bg-pink-700 p-2 rounded-sm relative left-72 my-2 text-white"
+        className="bg-pink-700 p-2 rounded-sm relative left-72 my-2 text-white hover:bg-pink-600"
         onClick={() => dispatch(removeFormData())}
       >
         close
       </button>
+      {
+editBeneficiary && <button className="p-2 bg-pink-700 rounded-sm relative left-36 text-white hover:bg-pink-600" onClick={editBeneficiary}>confirm</button>
+      }
     </div>
   );
 };

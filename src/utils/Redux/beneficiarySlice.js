@@ -4,9 +4,9 @@ const beneficiarySlice = createSlice({
   name: "beneficiary",
   initialState: {
     myBeneficiaries: BENEFICIARY_MOCK_DATA,
-    viewBeneficiary: null,
     formData: null,
     beneficiaryToEdit: null,
+    message:""
   },
   reducers: {
     addBeneficiary: (state, action) => {
@@ -17,12 +17,7 @@ const beneficiarySlice = createSlice({
         (item) => item.account_number !== action.payload.account_number
       );
     },
-    addViewBeneficiary: (state, action) => {
-      state.viewBeneficiary = action.payload;
-    },
-    removeViewBeneficiary: (state) => {
-      state.viewBeneficiary = null;
-    },
+
     addFormData: (state, action) => {
       state.formData = action.payload;
     },
@@ -35,18 +30,20 @@ const beneficiarySlice = createSlice({
     removeBeneficiaryToEdit: (state) => {
       state.beneficiaryToEdit = null;
     },
+    addMessage:(state,action)=>{
+   state.message=action.payload
+    }
   },
 });
 
 export const {
   addBeneficiary,
   removeBeneficiary,
-  addViewBeneficiary,
-  removeViewBeneficiary,
   addFormData,
   removeFormData,
   addBeneficiaryToEdit,
-  removeBeneficiaryToEdit
+  removeBeneficiaryToEdit,
+  addMessage
 } = beneficiarySlice.actions;
 
 export default beneficiarySlice.reducer;

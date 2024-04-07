@@ -1,5 +1,5 @@
 import React from 'react'
-import {useDispatch,useSelector} from "react-redux"
+import {useDispatch} from "react-redux"
 import { ACCOUNT_TYPE_OPTIONS } from '../utils/constants'
 import { addFormData } from '../utils/Redux/beneficiarySlice'
 const Form = ({register,errors,handleSubmit}) => {
@@ -63,7 +63,7 @@ const Form = ({register,errors,handleSubmit}) => {
         className="border  border-black rounded-sm w-1/3 mb-3 py-1 px-2 "
       >
         {ACCOUNT_TYPE_OPTIONS.map((item) => (
-          <option value={item}>{item}</option>
+          <option value={item} key={item}>{item}</option>
         ))}
       </select>
       
