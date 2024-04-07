@@ -9,6 +9,7 @@ import Home from './components/Home';
 import {Provider} from "react-redux"
 import appStore from './utils/Redux/appStore';
 import AddBeneficiary from './components/AddBeneficiary';
+import EditBeneficiary from './components/EditBeneficiary';
 const appRouter=createBrowserRouter([
   {
     path:"/",
@@ -24,6 +25,9 @@ const appRouter=createBrowserRouter([
     path:"/beneficiary/new",
     element:<AddBeneficiary/>
 
+  },{
+    path:"beneficiary/edit",
+    element:<EditBeneficiary/>
   }]
   }
 ])

@@ -1,15 +1,42 @@
-import React from 'react'
-import {useSelector,useDispatch} from "react-redux"
-import { removeViewBeneficiary } from '../utils/Redux/beneficiarySlice'
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { removeFormData } from "../utils/Redux/beneficiarySlice";
 const BeneficiaryView = () => {
-const beneficiary =useSelector(store=>store.beneficiary.viewBeneficiary)
-const dispatch=useDispatch()
+  const beneficiary = useSelector((store) => store.beneficiary.formData);
+  const dispatch = useDispatch();
+  const { name, account_number, bank_name, account_type, email_id } =
+    beneficiary;
   return (
-    <div className="h-1/3 w-1/3 bg-white absolute">
-     {beneficiary.name} 
-     <button className='bg-pink-700 p-2 rounded-sm' onClick={()=>dispatch(removeViewBeneficiary())}>close</button>
-    </div>
-  )
-}
+    <div className=" sm:min-w-96 bg-white absolute top-40 border-pink-700 shadow-lg border p-3 mb-3">
+      <h1 className="text-lg font-bold">Beneficiary Details</h1>
+      <table className="mt-3 bg-pink-50 flex justify-between p-2">
+      
+        <td>
+          <tr className="h-10 ">Name</tr>
+          <tr className="h-10">Account Number</tr>
+          <tr className="h-10">Bank Name</tr>
+          <tr className="h-10">Account Type</tr>
+          <tr className="h-10">Email Id</tr>
+        </td>
 
-export default BeneficiaryView
+        <td >
+          <tr className="h-10 ">{name}</tr>
+          <tr className="h-10">{account_number}</tr>
+          <tr className="h-10">{bank_name}</tr>
+          <tr className="h-10">{account_type}</tr>
+          <tr className="h-10">{email_id}</tr>
+          
+        </td>
+      </table>
+
+      <button
+        className="bg-pink-700 p-2 rounded-sm relative left-72 my-2 text-white"
+        onClick={() => dispatch(removeFormData())}
+      >
+        close
+      </button>
+    </div>
+  );
+};
+
+export default BeneficiaryView;

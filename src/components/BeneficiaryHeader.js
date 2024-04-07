@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const BeneficiaryHeader = () => {
   return (
     <div className='w-2/3 text-center my-2'>
-      <h1 className='text-lg py-1'>Manage Beneficiaries</h1>
+      <h1 className='text-lg py-1 font-bold'>Manage Beneficiaries</h1>
       <hr/>
       <div className='flex justify-between m-4 '>
         
